@@ -6,16 +6,18 @@ const jsdom = require("jsdom");
 const dom = new jsdom.JSDOM();
 global.window = dom.window;
 global.document = dom.window.document;
-// Here we are just requiring the compiled Elm code. Nothing fancy
+
+// Here we are requiring the compiled Elm code directly. Nothing fancy
+// The compilation command is in start.sh
 const Elm = require("./elm-build/main");
 
 // This is just a little Promise-like wrapper.
-// We could just use callbacks if we wanted.
+// We could just use callbacks instead if we wanted.
 const { Future } = require("ramda-fantasy");
 
 // This will load the API we are exposing. Ideally we only
-// call this once and afterwards we use a reference to the
-// object it returned every time we need its functions.
+// call this once and afterwards use a reference to the
+// object it returned.
 const loadAPI = () =>
     Future((reject, resolve) => {
         const app = Elm.Main.fullscreen();
