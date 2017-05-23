@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 const jsdom = require("jsdom");
 
-// Elm needs some DOM to operate on, so create a fake one
+// Elm needs some DOM to operate on, so create a fake one.
+// In the browser we don't need that
 const dom = new jsdom.JSDOM();
 global.window = dom.window;
 global.document = dom.window.document;
@@ -14,7 +15,7 @@ const { Future } = require("ramda-fantasy");
 
 // This will load the API we are exposing. Ideally we only
 // call this once and afterwards we use a reference to the
-// object it returned
+// object it returned every time we need its functions.
 const loadAPI = () =>
     Future((reject, resolve) => {
         const app = Elm.Main.fullscreen();
