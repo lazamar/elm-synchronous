@@ -1,0 +1,11 @@
+{
+  "name": "Elm-synchronous",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "^11.0.0",
+    "ramda-fantasy": "^0.8.0"
+  }
+}
